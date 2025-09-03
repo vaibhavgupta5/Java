@@ -2,6 +2,7 @@ package CA;
 
 interface Book {
     void scheduleRide();
+
     void cancelRide();
 }
 
@@ -60,7 +61,7 @@ abstract class BusRide implements Book, BookingAttributes {
 }
 
 public class QuickRide {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         CabRide cabRide = new CabRide() {
             {
@@ -83,13 +84,32 @@ public class QuickRide {
             }
         };
 
-        cabRide.scheduleRide();
-        cabRide.cancelRide();
+        try {
 
-        trainRide.scheduleRide();
-        trainRide.cancelRide();
+            cabRide.scheduleRide();
+            cabRide.cancelRide();
 
-        busRide.scheduleRide();
-        busRide.cancelRide();
+        } catch (Exception e) {
+            System.out.println("Error occurred while in cab ride.");
+        }
+
+        try {
+
+            trainRide.scheduleRide();
+            trainRide.cancelRide();
+
+        } catch (Exception e) {
+            System.out.println("Error occurred while in cab ride.");
+        }
+
+        try {
+
+            busRide.scheduleRide();
+            busRide.cancelRide();
+
+        } catch (Exception e) {
+            System.out.println("Error occurred while in cab ride.");
+        }
+
     }
 }
